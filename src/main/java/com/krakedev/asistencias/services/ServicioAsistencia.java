@@ -54,4 +54,24 @@ public class ServicioAsistencia {
 		// Retorna el registro creado
 		return registro;
 	}
+	// Consulta todas las asistencias de un estudiante
+	public ArrayList<Asistencia> consultarAsistencia(String cedula) {
+
+		// Lista donde guardamos las asistencias encontradas
+		ArrayList<Asistencia> asistencias = new ArrayList<>();
+
+		// Recorre todos los registros de asistencia
+		for (RegistroAsistencia registro : registros) {
+
+			// Compara la cédula del estudiante del registro
+			if (registro.getEstudiante().getCedula().equals(cedula)) {
+
+				// Agrega la asistencia encontrada
+				asistencias.add(registro.getAsistencia());
+			}
+		}
+
+		// Retorna todas las asistencias encontradas
+		return asistencias;
+	}
 }
