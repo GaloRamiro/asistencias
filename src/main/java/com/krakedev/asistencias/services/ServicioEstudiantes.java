@@ -11,8 +11,16 @@ public class ServicioEstudiantes {
 
 	private ArrayList<Estudiante> estudiantes = new ArrayList<>();
 
-	// Agrega un estudiante y no permite cédulas duplicadas
+	// Agrega un estudiante si la cédula no está registrada
 	public void agregar(Estudiante estudiante) {
+
+		// Busca si ya existe un estudiante con esa cédula
+		Estudiante encontrado = buscarPorCedula(estudiante.getCedula());
+
+		// Si no existe, lo agrega a la lista
+		if (encontrado == null) {
+			estudiantes.add(estudiante);
+		}
 	}
 
 	// Busca un estudiante por su cédula
@@ -33,10 +41,28 @@ public class ServicioEstudiantes {
 
 	// Elimina un estudiante usando su cédula
 	public void eliminar(String cedula) {
+
+		// Busca el estudiante por la cédula
+		Estudiante encontrado = buscarPorCedula(cedula);
+
+		// Si existe, lo elimina de la lista
+		if (encontrado != null) {
+			estudiantes.remove(encontrado);
+		}
 	}
 
 	// Actualiza los datos de un estudiante
 	public void actualizar(String cedula, Estudiante nuevo) {
+
+		// Busca el estudiante que queremos actualizar
+		Estudiante encontrado = buscarPorCedula(cedula);
+
+		// Si existe, cambia sus datos
+		if (encontrado != null) {
+			encontrado.setCedula(nuevo.getCedula());
+			encontrado.setNombre(nuevo.getNombre());
+			encontrado.setApellido(nuevo.getApellido());
+		}
 	}
 
 	// Retorna todos los estudiantes
