@@ -59,7 +59,6 @@ public class ServicioEstudiantes {
 
 		// Si existe, cambia sus datos
 		if (encontrado != null) {
-			encontrado.setCedula(nuevo.getCedula());
 			encontrado.setNombre(nuevo.getNombre());
 			encontrado.setApellido(nuevo.getApellido());
 		}
